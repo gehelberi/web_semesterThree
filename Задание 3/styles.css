@@ -1,0 +1,17 @@
+
+body{
+    font-size: 20px;
+}
+span{
+    font-size: 20px;
+}
+div{
+    font-size: 30px;
+}
+
+.tableData td:nth-child(even){
+    background-color: #f3f2;
+}
+.tableData td:nth-child(odd){
+    background-color:  #f2f2f2;
+}
