@@ -1,0 +1,40 @@
+<div class="wrapper"><h3 class="h3">Click a line to edit</h3></div>
+<table class="table">
+  <thead class="table__header thead-light">
+  <td class="table__header-item" *ngFor="let item of  data[0] | keyvalue">
+    {{item.key}}
+  </td>
+  </thead>
+  <tbody class="table__body">
+  <tr class="table__rows" *ngFor=" let item of  data ; let i = index" [ngClass]='i.toString()'  (click)="chooseRow(i)">
+    <td *ngFor=" let info of  data[i] | keyvalue" [ngClass]='getColumnClass(info.key)'>
+      {{info.value}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="container">
+
+  <form>
+    <div class="formForNewData">
+      <div class="form-group row"  *ngFor="let item of  data[0] | keyvalue">
+        <label class="col"  for="{{ 'Input-' + item.key }}">{{item.key}} :</label>
+        <input class="col form-control" type="text"  id="{{ 'Input-' + item.key }}" >
+      </div>
+    </div>
+    <div class="rowId d-flex">
+      <h4>Row number: </h4><h4 class="rowNumber"> {{chosenRow}}</h4>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="addRow()">Add</button>
+    <button class="btn btn-primary" type="button" (click)="editRow()">Edit</button>
+    <button class="btn btn-primary" type="button" (click)="deleteRow()">Delete</button>
+  </form>
+
+  <div class="jumbotron p-10">
+    <div class="h5"> Total quantity: {{countSum('quantity')}}</div>
+    <div class="h5"> Total price: {{countSum('price')}} </div>
+    <div class="h5"> Average quantity: {{countAverageValue('quantity')}}</div>
+    <div class="h5"> Average price:  {{countAverageValue('price')}}</div>
+  </div>
+</div>
+
